@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    .container_logo
+    {
+        height: 50px;
+        width: 50px;
+    }
+    body
+    {
+        background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        height: 100vh;
+
+    }
+    .heading{
+        line-height: 100px;
+        text-align: center;
+        font-size: 30px;
+        height: 100px;
+        width: 99%;
+        color: white;
+        border: 1px solid white;
+        background-color: #1D1C1F;
+    }
+    .search{
+        float: right;
+        font-size: 20px;
+        line-height: 50px;
+        margin-right: 40px;
+        display: flex;
+    }
+    .date
+    {
+        margin-top: 30px;
+    }
+    .below1{
+        margin:20px;
+        width:60%;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        background-color: #1D1C1F;
+        padding: 5px;
+        color: white;
+        border: 1px solid #f1f2f3;
+        display: flex;
+    }
+    .prof
+    {
+        float: left;
+        margin-right: 20px;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    .below{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .vitals{
+        width: 200px;
+        min-width: 200px;
+        height: 100px;
+        border: 2px solid #0274BD;
+        border-radius: 8px;
+        margin:25px;
+        font-size: 20px;
+        text-align: center;
+        line-height: 45px;
+        border: 1px solid #f1f2f3;
+        background-color: #1D1C1F;
+        color: white;
+    }
+    input[type=text]{
+        width: 100px;
+        border-radius: 10px;
+        border: none;
+        height: 25px;
+    }
+    input[type=text]{
+        width: 300px;
+        border-radius: 10px;
+        border: none;
+        height: 25px;
+        color: black;
+    }
+    label{
+        font-size: 15px;
+    }
+    .but{ 
+        text-align: center;
+        margin-top: 80px;
+    }
+    button{
+        background-color: #1D1C1F;
+        color: white;
+        width: 400px;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        margin: 20px;
+        border: 1px solid #f1f2f3;
+    }
+    input[type=submit]
+    {
+        margin: 0px;
+    }
+    button:hover{
+        background-color: #024067;
+    }
+    .details
+    {
+        margin-right: 30px;
+    }
+    .body
+    {
+        width: 100%;
+        height: 90%;
+        display: flex;
+        
+    }
+    .container
+    
+    {
+        width: 100%;
+        border-left: 4px solid black;
+    }
+    .buttons
+    {
+        margin: 10px;
+        display: inline-block;
+        width: 20%;
+        height: 600px;
+    }
+    .buts
+    {
+        background-color: #1D1C1F;
+        color: white;
+        width: 90%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        margin: 10px;
+        border: 1px solid #f1f2f3;
+    }
+    #table
+    {
+        display: none;
+    }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        width: 450px;
+        font-size: 15px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: black;
+        border: 1px solid black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      .dropdown a:hover {background-color: #ddd;}
+    
+      .show {display: block;}
+
+      .next
+      {
+        border-bottom: 1px solid rgb(10, 10, 10);
+      }
+      .success
+      {
+        color: white;
+        margin: 30px;
+        width: 300px;
+        height: 30px;
+        background-color: rgb(43, 159, 63);
+        border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(55, 228, 16, 0.4);
+        animation: text 5s 1 ;
+        text-align: center;
+      }
+      h2
+      {
+        color: black;
+      }
+    
+
+</style>
+<body>
+    {% for message in messages %}
+    <div class="success">
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}} </strong>
+    </div>
+    </div>
+    {% endfor %}
+    <div class="heading">
+        <b style="margin-left: 65px;">VITAL-SIGNS</b>
+        <div class="search">
+            <div class="dropdown">
+                <button onclick="myFunction()" type="submit" class="dropbtn">PATIENTS</button>
+                <form action="/select" method="post">
+                    {%csrf_token%}
+                    <div id="myDropdown" class="dropdown-content">
+                        {% if message %}
+                        <h2>{{ message }}</h2>
+                        {% else %}
+                        {%endif%}
+                        {%for patient in patients%}
+                        <div class="next">
+                            <a href="/select/{{patient.patient_id}}">{{patient.patient_name}}</a>
+                        </div>
+                        {%endfor%}
+                        </div>
+                </form>
+              </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="buttons">
+            <a href="/index"><button class="buts">HOME</button></a>
+            <a href="/appointments"><button class="buts">APPOINTMENT RECORDS</button></a>
+            <a href="/appointment-page"><button class="buts">SCHEDULE APPOINTMENT</button></a>
+            <a href="/reg"><button class="buts">REGISTRATION</button></a>
+            <a href="/check_in"><button class="buts">CHECK-IN</button></a>
+            <a href="/vitals"><button class="buts">VITAL-SIGN</button></a>
+            <a href="/"><button class="buts">PHARMACY</button></a>
+            <a href="/record"><button class="buts">PATIENT RECORDS</button></a>
+            <a href="/signout"><button class="buts" style="background-color: rgb(144, 49, 49);">LOG-OUT</button></a>
+        </div>
+        <div class="container">
+            <div class="below1">
+            <form action="" method="post">
+            {%csrf_token%}
+                    <div class="prof">
+                        <b><label for="">NAME:</label></b><br>
+                        <input type="text" value="{{vitals.patient_name}}" name="name"><br>
+                    </div>
+                    <div class="prof">
+                            <b><label for="">DATE</label></b><br>
+                        <textarea name="date" id="displayDateTime" cols="15" rows="1" readonly></textarea>
+                    </div>
+                </div>
+                <div class="below" style="display: flex;">
+                    <div class="vitals">
+                        <b>BLOOD PRESSURE</b> <br>  
+                        <input type="text" style="width:100px" name="bp">
+                        <label for="">mmHg</label>
+                    </div>
+                    <div class="vitals">
+                        <b>BLOOD SUGAR</b> <br>
+                        <input type="text" style="width:100px" name="sugar">
+                        <label for="">mmol/L</label>
+                    </div>
+                    <div class="vitals">
+                        <b>Height</b> <br>
+                        <input type="text" style="width:100px" name="height">
+                        <label for="">ft</label>
+                    </div>
+                    <div class="vitals">
+                        <b>HEART RATE</b> <br>
+                        <input type="text" style="width:100px" name="heart">
+                        <label for="">BPM</label>
+                    </div> <br>
+                    <div class="vitals">
+                        <b>TEMPERATURE</b> <br>
+                        <input type="text" style="width:100px" name="temp"> 
+                        <label for="">°C</label>
+                    </div>
+                    <div class="vitals">
+                        <b>WEIGHT</b> <br>
+                        <input type="text" style="width:100px" name="weight">
+                        <label for="">kg</label>
+                    </div>
+                    <div class="vitals" style="width: 250px;">
+                        <b>RESPIRATION-RATE</b> <br>
+                        <input type="text" style="width:100px" name="resp">
+                        <label for="">rpm</label>
+                    </div>
+                </div>
+                <div class="but">
+                    <button>submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+      
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+      var today = new Date();
+      var month =(today.getMonth()+1)
+      var day = today.getDate()
+      if(month < 10)
+      {
+        month = '0'+month
+      }
+      if(day<10)
+      {
+          day ='0'+day
+      }
+      var date = today.getFullYear()+'/'+month+'/'+day;
+      var time = today.getHours() + ":" + today.getMinutes()
+      var dateTime = date +"||"+time
+       
+      document.getElementById("displayDateTime").innerHTML = dateTime;
+      document.getElementById("displaydate").innerHTML =date
+
+
+</script>
+</html>

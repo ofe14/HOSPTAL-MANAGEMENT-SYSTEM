@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage-hospital</title>
+    <link rel="stylesheet" href="static/check_in.css">
+</head>
+<style>
+
+  body
+  {
+    justify-content: center;
+  }
+  .body
+  {
+    display: flex;
+  }
+  .container
+  {
+    width: 75%;
+    margin-top: 120px
+
+  }
+  img
+  {
+    height: 100%;
+    width: 100%;
+  }
+  .container_logo
+  {
+    height: 150px;
+    width: 150px;
+    display: inline-block;
+    margin-top: 30px;
+  }
+
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; 
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4); 
+    }
+    
+  
+    .modal-content {
+      background-color: #aaa;
+      border-radius: 10px;
+      margin: 15% auto; 
+      padding: 20px;
+      border: 1px solid #888;
+      width: 40%;
+      height: 600px;
+      color: rgb(16, 15, 15);
+      border: 1px solid #45BCE5;
+    }
+    input[type=submit]
+    {
+      margin-top: 50px;
+      width: 100%;
+      height: 35px;
+      background-color: #1c596d;
+      border:2px solid rgb(255, 255, 255);
+      border-radius: 10px;
+      color: white;
+    }
+    input[type=submit]:hover
+    {
+      background-color: #092b42;
+      color: white;
+    }
+    input[type=text]
+    {
+      width: 70%;
+      height: 30px;
+    }
+    
+    #myBtn
+    {
+      width: 100%;
+    }
+    #myBtn2
+    {
+      width: 100%;
+    }
+    #myBtn3
+    {
+      width: 100%;
+    }
+  
+    .close {
+      color: #df0f0f;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .dropbtn:hover, .dropbtn:focus {
+      background-color: #2980B9;
+    }
+    
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      overflow: auto;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+    
+    .dropdown-content a {
+      color: black;
+      border: 1px solid black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    textarea
+    {
+      margin-left: 5px;
+      width: 90%;
+    }
+    
+    .dropdown a:hover {background-color: #ddd;}
+    
+    .show {display: block;}
+
+    .activity
+    {
+      height: 240px;
+      width: 95%;
+      border: 2px solid rgb(147, 141, 141);
+      border-radius: 10px;
+      text-align: left;
+      padding: 7px;
+    }
+    label
+    {
+      margin-top: 6px;
+      float: left;
+      color: rgb(0, 0, 0);
+    }
+    .conti
+    {
+      display: flex;
+      height: 40px;
+    }
+    .success
+    {
+      color: white;
+      margin: 30px;
+      width: 300px;
+      height: 30px;
+      background-color: rgb(43, 159, 63);
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(55, 228, 16, 0.4);
+      animation: text 5s 1 ;
+    }
+    td
+    {
+      color: black;
+    }
+    .buttons
+    {
+        margin: 10px;
+        display: inline-block;
+        width: 25%;
+        height: 600px;
+        border-right: 4px solid rgb(8, 8, 8);
+        margin-top: 100px
+    }
+    .buts
+    {
+      width: 70%;
+      border-radius: 10px;
+      margin: 10px;
+      height: 50px;
+      background-color: #1D1C1F;
+      border: 2px solid rgb(181, 173, 173);
+      color: white;
+    }
+    #buts
+    {
+      width: 70%;
+      border-radius: 10px;
+      margin: 10px;
+      height: 50px;
+      background-color: #1D1C1F;
+      border: 2px solid rgb(181, 173, 173);
+      color: white;
+    }
+    #buts:hover
+    {
+      background-color: #15394f;
+    }
+    button:hover
+    {
+      background-color: #15394f;
+    }
+  </style>
+<body>
+  {% for message in messages %}
+  <div class="success">
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>{{message}} </strong>
+  </div>
+  </div>
+  {% endfor %}
+    <div class="body">
+    <div class="buttons">
+      <a href="/index"><button class="buts">HOME</button></a>
+      <a href="/appointments"><button class="buts">APPOINTMENT RECORDS</button></a>
+      <a href="/appointment-page"><button class="buts">SCHEDULE APPOINTMENT</button></a>
+      <a href="/reg"><button class="buts">REGISTRATION</button></a>
+      <a href="/check_in"><button class="buts">CHECK-IN</button></a>
+      <a href="/vitals"><button class="buts">VITAL-SIGN</button></a>
+      <a href="/"><button class="buts">PHARMACY</button></a>
+      <a href="/record"><button class="buts">PATIENT RECORDS</button></a>
+  </div>
+    <div class="container">
+      <p>HERITAGE HOSPITAL</p>
+        <form action="" method="post">
+            {%csrf_token%}
+            <input type="search" placeholder="Search data" name="search">
+            <button name="submit" >Search</button>
+        </form>
+        <table>
+        {% if message %}
+            <div class="container_logo">
+            <img src="/static/no-results.png" alt="">
+            </div>
+            <h2>{{ message }}</h2>
+        {% else %}
+        {%endif%}
+            <tbody>
+                {% for registration in registrations %}
+                <table>
+                    <thead>
+                        <tr>
+                            <Th>ID</Th>
+                            <th>FIRSTNAME</th>
+                            <th>MIDDLENAME</th>
+                            <th>SURNAME</th>
+                            <th>GENDER</th>
+                            <th>OPERATIONS</th>
+
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>{{ registration.id }}</td>
+                        <td>{{ registration.firstname }}</td>
+                        <td>{{ registration.middlename }}</td>
+                        <td>{{ registration.surname }}</td> 
+                        <td>{{ registration.gender }}</td> 
+                        <td>
+                          <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn" id="buts" style="height:40px;margin:0px;width:100%">CHECK-IN</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <button id="myBtn">CHECK IN</button>
+                                <a href="/appointment-page">SCHEDULE APPOINMENT</a>
+                                <a href="/appointments">APPOINTMENTS</a>
+                  
+                            </div>
+                          </div>
+                        </td>
+                    </tr>
+                </table>
+                    
+            {%endfor%}
+    </div>
+    <div id="myModal" class="modal">
+            
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <form action="/logs" method="post">
+        {%csrf_token%}
+        {% for registration in registrations %}
+        <div class="conti">
+          <label for="" ><b>ID:</b></label>
+        <input type="text" name="id" id="" value="{{ registration.id }}" readonly style="margin-left:30px;">
+        </div>
+        <div class="conti">
+        <label for=""><b>NAME:</b></label>
+        <input type="text" name="name" id="" value="{{ registration.firstname }} {{ registration.middlename }} {{ registration.surname }}" readonly>
+        </div>
+        <div class="conti">
+        <label for=""><b>TIME:</b></label>
+        <textarea name="time" id="displayDateTime" cols="10" rows="2" readonly></textarea>
+       </div>
+        <u> <b> ACTIVITY</b></u>
+        <div class="activity">
+            REGULAR-CHECKUP <input type="checkbox" name="check" id="" value="regular checkup"><br>
+            DOCTOR'S VISTT <input type="checkbox" name="check" id="" value="doctor's visit"><br>
+            EMERGENCY <input type="checkbox" name="check" id="" value="Emergency"><br><br>
+            ADDITIONAL INFORMATION:
+            <textarea name="add" id="" cols="60" rows="9" placeholder="ADDITIONAL INFORMATION"></textarea>
+
+            <input type="submit" value="Submit">
+          </form>
+        </div>
+        {%endfor%}
+
+        
+      </div>
+      
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+
+  var modal = document.getElementById("myModal");
+  
+  
+  var btn = document.getElementById("myBtn");
+  var btn2 = document.getElementById("myBtn2");
+  var btn3 = document.getElementById("myBtn3");
+  
+  
+  var span = document.getElementsByClassName("close")[0];
+  
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+var today = new Date();
+var month =(today.getMonth()+1)
+var day1 = today.getDate()
+if(month < 10)
+{
+  month = '0'+month
+}
+if(day1<10)
+{
+    day1 ='0'+day1
+}
+
+var day = today.getDay();
+var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
+var date = today.getFullYear()+'/'+month+'/'+day1;
+var time = today.getHours() + ":" + today.getMinutes()
+var dateTime = date+'||'+time;
+ 
+document.getElementById("displayDateTime").innerHTML = dateTime + '||' + daylist[day];
+      </script>
+</html>

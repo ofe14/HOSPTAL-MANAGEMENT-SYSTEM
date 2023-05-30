@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    body
+    {
+        background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        text-align: center;
+    }
+    .body
+    {
+        border-radius: 29px;
+    }
+    .pinfo
+    {
+        border: 2px solid #45BCE5;
+        width: 100%;
+        border-radius: 30px;
+        display: flex;
+        justify-content: center;
+        background-color:#1D1C1F;
+        margin-bottom: 30px;
+    }
+    .contents
+    {
+        width: 100%;
+        height: 400px;
+        display: flex;
+        border-radius: 30px;
+    }
+    .pic
+    {
+        margin: 10px;
+        min-width: 150px;
+        height: 150px;
+        background-color: beige;
+        justify-content: center;
+        border-radius: 10px;
+    }
+    img
+    {
+        width: 95%;
+        height: 95%;
+    }
+    .info1
+    {
+        display: flex;
+        text-align: center;
+        border-bottom:3px solid #45BCE5;
+        line-height: 30px;
+        
+    }
+    .c4
+    {
+        display: flex;
+        text-align: center; 
+        width: 100%;
+        margin-top: 50px;
+    }
+    .info2
+    {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        
+    }
+    .vs
+    {
+        width: 100%;
+        display: flex;
+        text-align: center;
+    }
+    .lab
+    {
+        width: 100%;
+        margin: 5px;
+        margin-bottom: 10px;
+    }
+    .textarea
+    {
+        width: 50%;
+        text-align: center;
+    }
+    textarea
+    {
+        border: 3px solid #45BCE5;
+        border-radius: 5px;
+        background-color: beige;
+    }
+    .buttons
+    {
+        display: inl;
+        width: 50%;
+        border-radius: 25px;
+    }
+    .pd
+    {
+        width: 100%;
+        display: inline-block;
+        color: white;
+    }
+    .menu
+    {
+        background-image: linear-gradient(to bottom,rgb(242, 243, 245),rgb(191, 193, 191));
+        height: 210px;
+        width: 210px;
+        border: none;
+        margin: 10px;
+        border-radius: 50px;
+        text-align: center;
+    }
+    .menu:hover
+    {
+        background-color: rgb(62, 86, 164);
+        border: 2px solid white;
+        box-shadow: 0 10px 25px rgba(4, 22, 97, 0.4);
+    }
+    h2{
+        margin-top: 1PX;
+        font-size:20px;
+    }
+    .container_logo
+    {
+        display:inline-block;
+        margin-top: 10px;
+        height: 150px;
+        width: 150px;
+        
+    }
+    .buttons
+    {
+        display: flex;
+        justify-content: center;
+    }
+    .buts
+    {
+        height: 30px;
+        width: 80%;
+        border-radius:20px ;
+        background-color: #45BCE5;
+        border: 2px solid white;
+        display: inline-block;
+        margin-bottom: 30px;
+        font-size: 14px;
+        line-height: 30px;
+    }
+    .buts:hover
+    {
+        background-color: #1b4388;
+        color: aliceblue;
+    }
+    .info3
+    {
+        width: 20%;
+        display:inline-block;
+        border-left: 3px solid #45BCE5;
+    }
+    textarea
+    {
+        margin: 20px;
+        width: 70%;
+        border-radius: 5px;
+    }
+    input[type=text]
+    {
+        text-align: center;
+        width: 200px;
+    }
+    .error
+    {
+        width: 100%;
+        text-align: center;
+    }
+    h2
+    {
+        font-size: 25px;
+    }
+    input[type="checkbox"]
+    {
+        height: 100px;
+        width: 100px;
+    }
+    select
+    {
+        width:50%;
+        height: 30px;
+    }
+    .lab
+    {
+        color: white;
+    }
+    a
+    {
+        text-decoration: none;
+        color: white;
+    }
+
+</style>
+<body>
+
+    <div class="body">
+        <div class="pinfo">
+            {%for patient in data%}
+            <div class="pd">
+                <form action="" method="post">
+                {%csrf_token%}
+                <div class="info1">
+                    <div class="pic">
+                        <img src="/static/profile.png" alt="">
+                    </div>
+                    
+                    <div class="c4">
+                        <input type="checkbox" id="myCheckbox" hidden> 
+                        <div class="lab"><label for="">PATIENT ID:<br><input style="width: 100px;" type="text" name="id" id="" value="{{patient.id}}"></label></div>
+                        <div class="lab"><label for="">NAME:<br><input type="text" name="name" value="{{patient.firstname}} {{patient.surname}}"readonly></label></div>
+                        <div class="lab"><label for="">AGE:<br><input style="width: 100px;" type="text" value="{{patient.age}}"></label></div>
+                    </div>
+                </div>
+                <div class="error">
+                {% if message %}
+                <h2>{{ message }}</h2>
+                {% else %}
+                {%endif%}
+                </div>
+                {%for chk in check %}
+                <div class="info2">
+                    <div class="vs">
+                        <div class="lab"><label for="">BLOOD PRESSURE: <br>{{chk.blood_pressure}} </label></div>
+                        <div class="lab"><label for="">BLOOD SUGAR <br>{{chk.sugar_level}}</label></div>
+                        <div class="lab"><label for="">HEIGHT <br>{{chk.height}}</label></div>
+                        <div class="lab"><label for="">HEART RATE <br>{{chk.heart_rate}} </label></div>
+                        <div class="lab"><label for="">TEMPERATURE <br>{{chk.temperature}}</label></div>
+                        <div class="lab"><label for="">WEIGHT <br>{{chk.weight}}</label></div>
+                        <div class="lab"><label for="">RESPIRATORY RATE <br>{{chk.respiration}}</label></div>
+                    </div>
+                    <div class="vs">
+                        <div class="lab"><label for="">if needed <br></label></div>
+                        <div class="lab"><label for="">if needed <br></label></div>
+                        <div class="lab"><label for="">if needed <br></label></div>
+                        <div class="lab"><label for="">if needed <br></label></div>
+                        <div class="lab"><label for="">if needed <br></label></div>
+                        <div class="lab"><label for="">if needed <br></label></div>
+                        <div class="lab"><label for="">if needed <br></label></div>
+                    </div>
+                    
+                </div>
+                {%endfor%}
+            </div>
+            <div class="info3">
+                <textarea name="date" id="displayDateTime" cols="15" rows="1" readonly style="text-align: center;"></textarea>
+                <a href="/doctors"><div class="buts">HOME</div></a>
+                <a href="#"><div class="buts">MESSAGES</div></a>
+            </div>
+        </div>
+            <div class="contents">
+                <div class="textarea">
+                    <div class="lab" style="margin-bottom: 10px;"><label for="" style="margin-bottom:20px;"><u>COMPLAINT</u></label></div> <br>
+                    <textarea name="complaint" id="" cols="48" rows="21"></textarea><br>
+                </div>
+                <div class="textarea">
+                    <div class="lab" style="margin-bottom: 10px;"><label for="" style="margin-bottom:20px;"><u>SEND MESSAGE</u></label></div> <br>
+                    TO:  <select name="recipient" id="recipient">
+                        <option value="Pharmacy">Pharmacy</option>
+                        <option value="Laboratory">Laboratory</option>
+                    </select>
+                    <textarea name="message" id="" cols="48" rows="19" placeholder="ENTER MESSAGE TO SEND"></textarea><br>
+                </div>
+            </div>
+        </div>
+        <button type="submit"><label for="myCheckbox">Submit</label></button>
+        
+        {%endfor%}
+    </form>
+</body>
+<script>
+    const checkbox = document.getElementById('myCheckbox');
+    const savedCheckboxState = localStorage.getItem('checkboxState');
+    if (savedCheckboxState === 'true') {
+      checkbox.checked = true;
+    }
+    checkbox.addEventListener('change', function() {
+      localStorage.setItem('checkboxState', checkbox.checked);
+    });
+
+    var today = new Date();
+    var month =(today.getMonth()+1)
+    var day = today.getDate()
+    if(month < 10)
+    {
+      month = '0'+month
+    }
+    if(day<10)
+    {
+        day ='0'+day
+    }
+    var date = today.getFullYear()+'-'+month+'-'+day;
+    var time = today.getHours() + ":" + today.getMinutes()
+    var dateTime = date 
+     
+    document.getElementById("displayDateTime").innerHTML = dateTime;
+    
+</script>
+</html>

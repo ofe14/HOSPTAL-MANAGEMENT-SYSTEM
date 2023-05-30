@@ -1,0 +1,47 @@
+body
+{
+    background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color:rgb(252, 252, 252);
+    justify-content: center;
+}
+p
+{
+    font-size: 50PX;
+}
+button
+{
+    padding: none;
+    color: rgb(37, 34, 34);
+    height: 31px;
+    width:100px;
+}
+input[type="search"]{
+	width: 400px;
+	border-radius: 5px;
+	border: 1.3px solid #575759;
+	padding: 10px;
+	outline: none;
+}
+table
+{
+    margin-top: 30px;
+    display: inline-block;
+    text-align: center;
+	background-color: white;
+	border: 2px solid black;
+}
+th
+{
+    background-color: #1D1C1F;
+	border: 2px solid black;
+	font-size: 14px;
+}
+td
+{
+	border: 2px solid black;
+	font-size: 14px;
+}

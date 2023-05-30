@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body
+    {
+        text-align: center;
+        color: black;
+    }
+    .card
+    {
+        margin-top: 250px;
+        border: 1px solid rgb(8, 8, 8);
+        width: 380px;
+        height: 240px;
+        display: inline-block;
+        background-color: white;
+        border-radius: 8px;
+    }
+    .logo
+    {
+        height: 70px;
+        width: 70px;
+        margin: 3px;
+    }
+    .picture
+    {
+        width: 30%;
+        height: 100px;
+    }
+    .upl
+    {
+        width: 100%;
+        border-bottom: 2px solid rgb(1, 1, 1);
+        display: flex;
+    }
+    .info
+    {
+        text-align: left;
+        margin-left: 20px;
+        width: 70%;
+    }
+    .info1
+    {
+        text-align: center;
+        width: 84%;
+    }
+    .lowl
+    {
+        height: 60PX;
+        line-height: 50px;
+        font-size: 20px;
+    }
+    img
+    {
+        width: 100%;
+        height: 100%;
+    }
+    .qrcode
+    {
+        height: 150px;
+        background-color: white;
+        width: 100%;
+        padding: 10px;
+    }
+    .pic
+    {
+        height: 150px;
+        width: 150px;
+        display: inline-block;
+        background-color: white;
+    }
+    button
+    {
+        width: 150px;
+        height: 30px;
+    }
+</style>
+<body>
+    <button onclick="window.print()">Print</button>
+    <div class="body">
+        <div class="card">
+            <div class="upl">
+                <div class="logo">
+                    <img src="/static/medart.png" alt="">
+                </div>
+                <div class="info1">
+                    <b><label style="font-size: 25px;">HERITAGE-HOSPITAL<br><label style="font-size: 15px;">Block P, NPDC ESTATE EDJBA,WARRI</label></label></b>
+                </div>
+            </div>
+            <div class="upl">
+                <div class="picture">
+                    {%if print.profile_photo%}
+                    <img src="{{print.profile_photo.url}}" alt="">
+                    {%endif%}
+                </div>
+                <div class="info">
+                <b>
+                <label for="">ID : {{print.id}}</label><br>
+                <label for="">Surname : {{print.surname}}</label><br>
+                <label for="">Firstname : {{print.firstname}}</label><br>
+                <label for="">SEX : {{print.gender}}</label><br>
+                </b>
+                </div>
+            </div>
+            <div class="lowl">
+                <label for="">THIS CARD IS NOT TRANSFERABLE</label>
+            </div>
+    
+        </div>
+        <div class="card">
+            <div class="upl">
+                <div class="info1" style="width: 100%;">
+                    <b><label style="font-size: 25px;">PATIENT</label></b>
+                </div>
+            </div>
+            <div class="upl">
+                    <div class="qrcode">
+                        <div class="pic">
+                            <img src="/static/qr-code.png" alt="">
+                        </div>
+                    </div>
+            </div>
+            <div class="lowl">
+                <label for="" style="font-size: 18px;">if found please return to HERITAGE HOSPITAL</label>
+            </div>
+    
+        </div>
+    </div>
+</body>
+</html>

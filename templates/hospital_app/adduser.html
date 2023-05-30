@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<body>
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong>{{message}}
+        <button type="button" class="close" data-dismiss
+        ="alert" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        {% endfor %}
+
+        
+    <H3>signup</H3>
+    <form method="post">
+        {%csrf_token%}
+        {%for field in form%}
+        <p>
+            {{field.label_tag}}<br>
+            {{field}}
+        </p>
+        {%endfor%}
+        {%for error in field.errors%}
+        <p style="color:red;">
+            {{error}}
+        </p>
+        {%endfor%}
+        <button type="submit" class="btn btn success">SIGN UP</button>
+    </form>
+    <a href="/signin"><button>signin</button></a>
+    <a href="/signout"><button>signout</button></a>
+
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    body
+    {
+        background-color: #1D1C1F;
+    }
+    video
+    {
+        object-fit: cover;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+    button:hover
+    {
+        background-color:#1D1C1F;
+        color: white;
+        box-shadow: 0 5px 15px rgba(254, 252, 255, 0.4);
+    }
+    body 
+        {   font-family: Arial, Helvetica, sans-serif;
+            display:flex;
+
+        }
+        .maincont
+        {
+            color: #000;
+            justify-content: center;
+        }
+        
+        .modal {
+          font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          display: none;
+          position: fixed;
+          z-index: 1;
+          padding-top: 100px; 
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto; 
+          background-color: rgba(0,0,0,0.4); 
+        }
+        .foot
+        {
+            animation: text 1.5s 1;
+        }
+        p
+        {
+            font-size:20px;
+            animation: text 1.5s 1;
+            margin-right: 30px;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .button1
+        {
+            width: 50%;
+            margin-top: 250px;
+        }
+        img
+        {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .head
+        {
+            display: inline-block;
+            margin-top: 5px;
+            width: 200px;
+            flex-wrap: wrap;
+            font-size: 30px;
+            height: 200px;
+            margin-left: none;
+        }
+        .button
+        {
+            line-height: 300px;
+            width: 100%;
+            margin-top: 350px;
+        }
+        button
+        {
+            color: white;
+            background-color: #45BCE5;
+            border-radius: 20px;
+            height: 60px;
+            width: 170px;
+            border: none;
+            float: right;
+            margin: 60px;
+        }
+        h1
+        {
+            text-align: left;
+            font-size: 40px;
+            color: rgb(50, 25, 25);
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input[type=text]
+        {
+            width: 50%;
+            min-width: 240px;
+            height: 30px;
+            border: 2px solid #45BCE5;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        input[type=password]
+        {
+            border: none;
+            height: 30px;
+            border: 2px solid #45BCE5;
+            width: 50%;
+            min-width: 240px;
+            border-radius: 8px;
+        }
+        input[type=submit]
+        {
+            margin-top: 60px;
+            border: none;
+            height: 50px;
+            width: 50%;
+            color: white;
+            background-color:#45BCE5;
+            min-width: 245px;
+            border-radius: 8px;
+        }
+        input[type=submit]:hover
+        {
+            background-color: #1D1C1F;
+            color: white;
+            box-shadow: 0 5px 15px rgba(254, 252, 255, 0.4);
+        }
+        .modal-content {
+            background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+          margin: auto;
+          float: right;
+          margin-right: 20px;
+          padding: 20px;
+          width: 25%;
+          min-width:400px;
+          height: 600px;
+          border-radius: 10px;
+          border: 1px solid #45BCE5;
+          text-align: center;
+        }
+        .button1
+        {
+            margin-left: 30px;
+            float: left;
+        }
+        
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        h4
+        {
+            font-family:cursive;
+            margin-top: 30px;
+        }
+        label
+        {
+            font-size: 20px;
+            color: white;
+        }
+        .close{
+            color: #000;
+        }
+        .close:hover,
+        .close:focus {
+          color: #ea0e0e;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        @keyframes text
+        {
+            0%
+            {
+                color: transparent;
+                margin-bottom: -40px;
+            }
+        }
+        .error
+        {
+          color: white;
+          margin: 30px;
+          width:350px;
+          height: 30px;
+          background-color: rgb(150, 34, 34);
+          border-radius: 50px;
+          box-shadow: 0 10px 25px rgba(180, 8, 8, 0.4);
+          animation: text 1s 1 ;
+          text-align: center;
+          border :2px solid rgb(227, 221, 221)
+        }
+        .message
+        {
+            display: inline-block;
+            height: 100px;
+        }
+        .containers
+        {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+</style>
+<body>
+ 
+        <video autoplay loop muted plays-inline class="background-clip">
+            <source src="/static/vid2.mp4" type="video/mp4">
+        </video>
+        <div class="containers">
+            <div class="message">
+                {% for message in messages %}
+                <div class="error">
+                <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong>{{message}} </strong>
+                </div>
+                </div>
+                {%endfor%}
+            </div>
+            <div class="button">
+                <button id="myBtn" >LOGIN</button>
+            </div>
+        </div>
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+  <form action="/signin" method="post">
+      {% csrf_token %}
+      <div class="maincont">
+          <div class="container">
+              <div class="head" style=" margin-bottom:30px;">
+                  <P style="font-size: 80px;">LOGIN</P>
+              </div>
+              <div class="foot">
+                 <form action="" method="post">
+                  {%csrf_token%}
+                  {{msg}}
+                  <label for="">Username</label>
+                  <input type="text" name="username" id=""><br>
+                  <label for="">Password</label>
+                  <input type="password" name="password" id="">
+                  <input type="submit" value="LOGIN">
+                 </form> 
+              </div>
+          </div>
+      </div>
+  </form>
+        </div>
+      
+      </div>
+</body>
+<script>
+
+    var modal = document.getElementById("myModal");
+    
+    var btn = document.getElementById("myBtn");
+    
+    var span = document.getElementsByClassName("close")[0];
+    
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+    
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+    }
+    </script>
+</html>

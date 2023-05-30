@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/record.css">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<body>
+    {% for message in messages %}
+        <div class="success">
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}} </strong>
+        </div>
+        </div>
+        {% endfor %}
+        <div class="container">
+            <a href="/index"><button>HOME-PAGE</button></a>
+            <div class="title">
+                <U>PATIENT RECORDS</U>
+            </div>
+            <form action="/check2" method="post">
+            {%csrf_token%}
+                <div class="srch">
+                    <input type="search" placeholder="Search record" name="search" value="{{search}}">
+                    <button name="submit" >Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="table">
+    <table>
+        <thead>
+        <tr>
+        <th>OPERATIONS</th>
+        <Th>ID</Th>
+        <th>REGISTRATION-DATE</th>
+        <th>FIRSTNAME</th>
+        <th>MIDDLENAME</th>
+        <th>SURNAME</th>
+        <th>DATE OF BIRTH</th>
+        <th>age</th>
+        <th>GENDER</th>
+        <th>IDENTIFICATION-DOCUMENT</th>
+        <th>MARITAL-STATUS</th>
+        <th>OCCUPATION</th>
+        <th>NATIONALITY</th>
+        <th>EMAIL</th>
+        <th>ADDRESS</th>
+        <th>PHONE</th>
+        <th>STATE</th>
+        <th>EMERGENCY-CONTACT</th>
+        <th>RELATIONSHIP</th>
+        <th>ADDRESS</th>
+        <th>PHONE</th>
+        <th>STATE</th>
+        <th>KNOWN-ALLERGIES</th>
+        <th>PAST-SURGRIES</th>
+        <th>CHRONIC-ILLNESS</th>
+        <th>PAYMENT</th>
+        </tr>
+        
+    </thead>
+    {% if message %}
+    <td colspan="20">
+        <div class="container_logo">
+            <img src="/static/no-results.png" alt="">
+        </div>
+        <h2>{{ message }}</h2>
+    </td>
+    {% else %}
+    {%endif%}
+    {%for rec in records%}
+    <tbody>
+    <tr>
+        <td><a href="/update/{{rec.id}}"><div class="op_upd">Update</div></a>
+            <a href="/delete/{{rec.id}}"><div class="op_del">Delete</div></a>
+            <a href="/print/{{rec.id}}"><div class="op_pr">Print Card</div></a>
+        </td>
+
+        <td>{{rec.id}}</td>
+        <td>{{rec.reg_date}}</td>
+        <td>{{rec.firstname}}</td>
+        <td>{{rec.middlename}}</td>
+        <td>{{rec.surname}}</td>
+        <td>{{rec.dateofbirth}}</td>
+        <td>{{rec.age}}</td>
+        <td>{{rec.gender}}</td>
+        <td>
+        {%if rec.identification%}
+            <a href="{{rec.identification.url}}"><button>VIEW FILE</button></a>
+        {%endif%}
+        </td>
+        <td>{{rec.marital_status}}</td>
+        <td>{{rec.occupation}}</td>
+        <td>{{rec.nationality}}</td>
+        <td>{{rec.email}}</td>
+        <td>{{rec.address}}</td>
+        <td>{{rec.phone}}</td>
+        <td>{{rec.state}}</td>
+        <td>{{rec.emg_name}}</td>
+        <td>{{rec.emg_relationship}}</td>
+        <td>{{rec.emg_address}}</td>
+        <td>{{rec.emg_phone}}</td>
+        <td>{{rec.emg_state}}</td>
+        <td>{{rec.allergies}}</td>
+        <td>{{rec.past_surgeries}}</td>
+        <td>{{rec.payment}}</td>
+        <td>{{rec.chronic_illness}}</td>
+    </tr>
+    </tbody>
+    {% endfor%}
+    </table>
+</div>
+</body>
+</html>

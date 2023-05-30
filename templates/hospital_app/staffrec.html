@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/record1.css">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    table
+{
+    margin-top: 30px;
+    display: inline-block;
+    text-align: center;
+	background-color: white;
+	border: 2px solid black;
+}
+th
+{
+    font-size: 18px;
+}
+td
+{
+    font-size: 18px;
+}
+</style>
+<body>
+    {% for message in messages %}
+        <div class="success">
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}} </strong>
+        </div>
+        </div>
+        {% endfor %}
+        <div class="container">
+            <a href="/index"><button>HOME-PAGE</button></a>
+            <div class="title">
+                <U>STAFF RECORDS</U>
+            </div>
+            <form action="/check3" method="post">
+            {%csrf_token%}
+                <div class="srch">
+                    <input type="search" placeholder="Search record" name="search">
+                    <button name="submit" >Search</button>
+                </div>
+            </form>
+        </div>
+    <table>
+        <thead>
+        <tr>
+        <Th>NAME</Th>
+        <th>EMAIL</th>
+        <th>PHONE</th>
+        <th>JOB</th>
+        <th>DEPARTMENT</th>
+        <th>DATE OF REG</th>
+        <th>OPERATIONS</th>
+        </tr>
+        
+    </thead>
+    {% if message %}
+    <td colspan="20">
+        <div class="container_logo">
+            <img src="/static/no-results.png" alt="">
+        </div>
+        <h2>{{ message }}</h2>
+    </td>
+    {% else %}
+    {%endif%}
+    {%for rec in records%}
+    <tbody>
+    <tr>
+        <td>{{rec.name}}</td>
+        <td>{{rec.email}}</td>
+        <td>{{rec.phone}}</td>
+        <td>{{rec.job}}</td>
+        <td>{{rec.department}}</td>
+        <td>{{rec.date}}</td>
+        <td><a href="{{rec.name}}"><div class="op_upd">Update</div></a>
+            <a href="/del2/{{rec.name}}"><div class="op_del">Delete</div></a></td>
+    </tr>
+    </tbody>
+    {% endfor%}
+    </table>
+</body>
+</html>

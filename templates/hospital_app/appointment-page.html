@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/appointment1.css">
+</head>
+<body>
+    {% for message in messages %}
+    <div class="success">
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}} </strong>
+    </div>
+    </div>
+    {% endfor %}
+    <div class="body">
+            <div class="remaining-bar">
+                <div id="header">
+                    APPOINTMENTS
+                </div>
+                <div class="rem2">
+                    <div class="contents">
+                        <form action="" method="post" id="form">
+                        {%csrf_token%}
+                        <div class="dept">
+                            <label for="">Department :</label>
+                            <select name="dept" id="dept" style="margin-left: 100px;" oninput="subm()">
+                                    <option value="{{dept}}" selected style="background-color: rgb(49, 163, 49);">{{dept}}</option>
+                                    <option value="RADIOLOGY"><button onclick="alert()">RADIOLOGY</button></option>
+                                    <option value="PEDIATRICIAN">PEDIATRICIAN</option>
+                                    <option value="NEUROLOGY">NEUROLOGY</option>
+                                    <option value="OBSTETRICS">OBSTETRICS</option>
+                                    <option value="CARDIOLOGY">CARDIOLOGY</option>
+                                    <option value="DENTAL">DENTAL</option>
+                            </select>
+                        </div>
+                        <div class="patientid">
+                            <label for="">Patient ID : </label>
+                            <input type="text" name="pid" style="margin-left: 120px;" placeholder="Patient Identidication Number">
+                        </div>
+                        <div class="dept">
+                            <label for="" >Session Title:</label>
+                            <input type="text" name="sess" style="margin-left: 100px;" placeholder="Name This Session">
+                        </div>
+                        <div class="doc">
+                            <label for="">Doctor :</label>
+                            <select name="doctor" id="">
+                                {% if message %}
+                                <h2>{{ message }}</h2>
+                                {% else %}
+                                {%endif%}
+                                {%for doctor in check%}
+                                <option value="{{doctor.job}} {{doctor.name}}">{{doctor.job}} {{doctor.name}}</option>
+                                {%endfor%}
+                            </select>
+                        </div>
+                        <div class="date">
+                            <label for="">Date :</label>
+                            <input type="date" name="dateofapp" id="" style="margin-left: 171px;">
+                        </div>
+                        <div class="time">
+                            <label for="">time</label>
+                            <input type="time" name="time" id="" style="margin-left: 190px;">
+                        </div>
+                        <div class="textarea">
+                            <label for="">Additional info:</label><br>
+                            <textarea name="addinfo" id="" cols="90" rows="13" placeholder="additional info"></textarea>
+                        </div>
+                        <input type="submit" value="Book" class="button" style="margin-left: 350px;">
+                    </form>
+                    </div>
+                    <div class="buttons">
+                        <a href="/index"><button class="buts">HOME</button></a>
+                        <a href="/appointments"><button class="buts">APPOINTMENT RECORDS</button></a>
+                        <a href="/appointment-page"><button class="buts">SCHEDULE APPOINTMENT</button></a>
+                        <a href="/reg"><button class="buts">REGISTRATION</button></a>
+                        <a href="/check_in"><button class="buts">CHECK-IN</button></a>
+                        <a href="/vitals"><button class="buts">VITAL-SIGN</button></a>
+                        <a href="/"><button class="buts">PHARMACY</button></a>
+                        <a href="/record"><button class="buts">PATIENT RECORDS</button></a>
+                    </div>
+                </div>
+            </div>
+    </div>        
+</body>
+<script>
+    function subm()
+    {
+        var form1= document.getElementById('form')
+        form1.submit();
+    }
+
+
+</script>
+</html>

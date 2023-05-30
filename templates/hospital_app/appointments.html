@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    body
+    {
+        text-align: center;
+        background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    table
+    {
+        width: 100%;
+    }
+    .table
+    {
+        width: 80%;
+    }
+    th
+    {
+        border-bottom:4px solid rgb(34, 134, 183);
+        border-right: 2px solid rgb(193, 190, 190);
+        border-left: 2px solid rgb(193, 190, 190);
+        border-top:  2px solid rgb(193, 190, 190);
+        font-size: 20px;
+        font-weight: 300px;
+    }
+    td
+    {
+        border-bottom: 2px solid rgb(193, 190, 190);
+        font-size:18px;
+    }
+    .wrapper
+    {
+        display: inline-block;
+        margin-top: 60px;
+    }
+    .container
+    {
+        display: flex;
+        width: 100%;
+        border: 3px solid #1D1C1F;
+        color: rgb(225, 225, 225);
+    }
+    .buttons
+    {
+        margin: 10px;
+        display: inline-block;
+        width: 20%;
+        height: 600px;
+        border-left: 4px solid rgb(8, 8, 8);
+    }
+    button
+    {
+      width: 70%;
+      border-radius: 10px;
+      margin: 10px;
+      height: 50px;
+      background-color: #1D1C1F;
+      border: 2px solid rgb(181, 173, 173);
+      color: white;
+    }
+    button:hover
+    {
+      background-color: #15394f;
+    }
+    .but
+    {
+        margin: 0px;
+        width: 95%;
+        height: 30px;
+    }
+    .head
+    {
+        font-size: 40px;
+        width: 100%;
+        background-color: #1D1C1F;
+        height: 50px;
+        color: white;
+
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="head">
+            APPOINTMENT RECORDS
+        </div>
+        <div class="container">
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>PATIETNT ID</th>
+                        <TH>DOCTOR</TH>
+                        <TH>SESSION TITLE</TH>
+                        <TH>SESSION DATE</TH>
+                        <TH>SESSION TIME</TH>
+                        <TH>EVENTS</TH>
+                    </tr>
+                    
+                </thead>
+                {% if message %}
+                <td colspan="20">
+                    <div class="container_logo">
+                        <img src="/static/no-results.png" alt="">
+                    </div>
+                    <h2>{{ message }}</h2>
+                </td>
+                {% else %}
+                {%endif%}
+                {%for rec in records%}
+                <tbody>
+                <tr>
+                    <td>{{rec.patient_id}}</td>
+                    <td>{{rec.doctor}}</td>
+                    <td>{{rec.session}}</td>
+                    <td>{{rec.date}}</td>
+                    <td>{{rec.time}}</td>
+                    <td><button class="but">cancel</button></td>
+                </tr>
+                </tbody>
+                {% endfor%}
+                </table>
+            </div>
+            <div class="buttons">
+                <a href="/index"><button class="buts">HOME</button></a>
+                <a href="/appointments"><button class="buts">APPOINTMENT RECORDS</button></a>
+                <a href="/appointment-page"><button class="buts">SCHEDULE APPOINTMENT</button></a>
+                <a href="/reg"><button class="buts">REGISTRATION</button></a>
+                <a href="/check_in"><button class="buts">CHECK-IN</button></a>
+                <a href="/vitals"><button class="buts">VITAL-SIGN</button></a>
+                <a href="/"><button class="buts">PHARMACY</button></a>
+                <a href="/record"><button class="buts">PATIENT RECORDS</button></a>
+            </div>
+        </div>  
+    </div>
+    
+</body>
+<script>
+
+</script>
+</html>
+

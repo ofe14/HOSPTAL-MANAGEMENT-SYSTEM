@@ -1,0 +1,200 @@
+<!dataTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    body
+{
+    text-align: center;
+    background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+    .head
+    {
+        display: flex;
+        border-radius: 20px; 
+        font-size: 15px; 
+        text-align: center;
+    }
+    .header
+    {
+        border: 1px solid #45BCE5;
+        background-color:#272628;
+        line-height: 50px;
+        border-radius: 20px;  
+        font-size: 43px;
+        width: 80%;
+        height: 140px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    .heading
+    {
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        color: white;
+        height: 100px;
+        font-size: 50px
+    }
+    .heading2
+    {
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        color: white;
+        height: 100px;
+        font-size: 50px;;
+        display: none;
+    }
+.profile
+{
+    padding: 10px;
+    width: 20%;
+    min-width: 250px;
+    height: 100px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(190, 193, 195);
+    backdrop-filter:blur(5px);
+    font-family: cursive;
+    margin: 15px;
+
+
+}
+.profile2
+{
+    display: flex;
+}
+.profile-img
+{
+    width: 55px;
+    height: 55px;
+}
+img
+{
+    width: 100%;
+    height: 100%;
+}
+.body
+{
+    width: 100%;
+    border: 2px solid red;
+}
+.patients
+{
+    width: 70%;
+    border: 2px solid blue;
+}
+.p
+{
+    width: 100%;
+    border: 2px solid yellow;
+}
+table
+{
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+td
+{
+    border-bottom: 2px solid #45BCE5;
+}
+.sbutton
+{
+    color: white;
+    background-color:#1D1C1F;
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 15px;
+    border:2px solid white;
+}
+.sbutton:hover
+{
+    background-color: #972b2b;
+    cursor: pointer;
+}
+button
+{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #222a2a;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+}
+button:hover
+{
+    background-color: #45BCE5;
+}
+.but1:hover
+{
+    background-color: #df0d0d;
+}
+</style>
+<body>
+    <div class="head">
+        <div class="header">
+            <a href="/index">
+                <div class="heading">
+                    <p>LABORATORY</p>
+                </div>
+                <div class="heading2">
+                    <p>LABORATORY</p>
+                </div>
+            </a>
+        </div>
+        <div class="profile">
+            <div class="profile2">
+                <div class="profile-img">
+                    <img src="/static/profile.png" alt="">
+                </div>
+                <h3 style="width:100%">welcome {{request.user.username}}</h3>
+            </div>
+            <a href="/signout"><button class="sbutton">signout</button></a>
+        </div>
+    </div>
+    <div class="body">
+        <div class="patients">
+            <div class="p">
+                <h1></h1>
+                <table>
+                    <tr>
+                        <thead>
+                            <td>ID</td>
+                            <td>NAME</td>
+                            <td>OPERATIONS</td>
+                        </thead>
+                    </tr>
+                    {% if message %}
+                    <td colspan="20">
+                        <h2>{{message}}</h2>
+                    </td>
+                    {% else %}
+                    {%endif%}
+                    {%for data in check%}
+                    <tr>
+                        <td>{{data.id}}</td>
+                        <td>{{data.name}}</td>
+                        <td>
+                            <a href="/lab2/{{data.id}}"><button>Open</button></a>
+                            <button class="but1">Delete</button>
+                        </td>
+                    </tr>
+                    {%endfor%}
+            </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

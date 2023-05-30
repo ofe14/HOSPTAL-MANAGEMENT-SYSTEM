@@ -1,0 +1,215 @@
+body
+{
+    text-align: center;
+    background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header1{
+    display: inline-block;
+    width:100%;
+}
+img
+{
+    width: 100%;
+    height: 100%;
+}
+.remaining-bar{
+    width: 100%;
+    right: 0px;
+}
+.rem2
+{  
+    width: 100%;
+    display: flex;
+    color: rgb(225, 225, 225);
+}
+.buttons
+{
+    display: inline-block;
+    width: 15%;
+    color: rgb(225, 225, 225);
+}
+button
+{
+    width: 95%;
+    height: 50px;
+}
+.contents
+{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 77%;
+    text-align: left;
+    font-size: 25px;
+    border-right: 3px solid black;
+}
+p
+{
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+img
+{
+    height: 100%;
+    width: 100%;
+}
+a
+{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.body
+{
+    display: inline-block;
+    margin-top:10px;
+}
+.content
+{
+    font-size: 20px;
+    color: rgb(225, 225, 225);
+    width: 80%;
+    display: flex;
+    justify-content: left;
+}
+.button1
+{
+    line-height: 190px;
+    text-align: center;
+    margin: 40px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.button1:hover
+{
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    box-shadow: #0274BD;
+
+}
+#header
+{
+    background-color: #1D1C1F;
+    font-size: 40px;
+    width: 100%;
+    color: rgb(225, 225, 225);
+    height: 50px;
+    border-bottom: 3px solid rgb(7, 7, 7);;
+}
+h6
+{
+    margin-bottom: 0px;
+}
+p
+{
+    width: 200px;
+    margin-bottom: 0px;
+    background-color: #000000;
+}
+.caption
+{
+    padding: 10px;
+    width: 600px;
+    height: 400px;
+}
+.caption2
+{
+    width: 600px;
+}
+.caphead
+{
+    display: flex;
+    width: 600px;
+}
+  input
+  {
+    margin-left: 40px;
+    width: 40%;
+    height: 30px;
+    border-radius: 5px;
+  }
+  select
+  {
+    margin-left: 150px;
+    width: 41%;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+  }
+  .patientid
+  {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .dept
+  {
+      width: 100%;
+      margin-bottom: 30px;
+  }
+  .doc
+  {
+      width: 100%;
+      margin-bottom: 30px;
+  }
+  .date
+  {
+    margin-bottom: 30px;
+  }
+  .time
+  {
+    margin-bottom: 30px;
+  }
+  .textarea
+  {
+    width: 100%;
+    height: 200px;
+    display: inline-block;
+  }
+  textarea
+  {
+    width: 40%;
+    margin-left: 235px;
+    margin-bottom:5px;
+  }
+  .button
+  {
+    color: white;
+    height: 30px;
+    width: 180px;
+    background-color: #1D1C1F;
+    border: none;
+  }
+  .button:hover
+  {
+    color: white;
+    height: 40px;
+    width: 190px;
+  }
+  button
+  {
+    width: 100%;
+    border-radius: 10px;
+    margin: 15px;
+    background-color:#1D1C1F;
+    border: 2px solid rgb(181, 173, 173);
+    color: white;
+  }
+  button:hover
+  {
+    background-color: #15394f;
+  }
+  .success
+  {
+    color: white;
+    margin: 30px;
+    width: 300px;
+    height: 30px;
+    background-color: rgb(43, 159, 63);
+    border-radius: 50px;
+    box-shadow: 0 10px 25px rgba(55, 228, 16, 0.4);
+    animation: text 5s 1 ;
+  }

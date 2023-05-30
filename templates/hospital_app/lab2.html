@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    body
+    {
+        text-align: center;
+        background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+    }
+    .head
+    {
+        display: flex;
+        border-radius: 20px; 
+        font-size: 15px; 
+        text-align: center;
+    }
+    .header
+    {
+        border: 1px solid #45BCE5;
+        background-color:#272628;
+        line-height: 50px;
+        border-radius: 20px;  
+        font-size: 43px;
+        width: 80%;
+        height: 140px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    .header1
+    {
+        border: 1px solid #45BCE5;
+        background-color:#272628;
+        line-height: 50px;
+        border-radius: 20px;  
+        width: 100%;
+        height: 140px;
+        color: white;
+        margin-bottom: 20px;
+    }
+    .heading
+    {
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        color: white;
+        height: 100px;
+        font-size: 50px
+    }
+    .heading2
+    {
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        color: white;
+        height: 100px;
+        font-size: 50px;;
+        display: none;
+    }
+    .profile
+    {
+        padding: 10px;
+        width: 20%;
+        min-width: 250px;
+        height: 100px;
+        border: none;
+        border-radius: 20px;
+        background-color: rgb(190, 193, 195);
+        backdrop-filter:blur(5px);
+        font-family: cursive;
+        margin: 15px;
+
+
+    }
+    .profile2
+    {
+        display: flex;
+    }
+    .profile-img
+    {
+        width: 55px;
+        height: 55px;
+    }
+    img
+    {
+        width: 100%;
+        height: 100%;
+    }
+    .body
+    {
+        width: 100%;
+        border: 2px solid red;
+        border-radius:10px;
+    }
+    .patients
+    {
+        width: 70%;
+        border: 2px solid blue;
+    }
+    .p
+    {
+        width: 100%;
+        border: 2px solid yellow;
+    }
+    .sbutton
+    {
+        color: white;
+        background-color:#1D1C1F;
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+        font-size: 15px;
+        border:2px solid white;
+    }
+    .sbutton:hover
+    {
+        background-color: #972b2b;
+        cursor: pointer;
+    }
+    button
+    {
+        width: 30%;
+        height: 30px;
+        border-radius: 10px;
+        background-color: #222a2a;
+        border: 2px solid white;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover
+    {
+        background-color: #45BCE5;
+    }
+    .button1
+    {
+        margin-top: 30px;
+        margin-left: 30px;
+        height: 50px;
+    }
+    label
+    {
+        margin: 20px;
+        font-size: 20px;
+    }
+    input[type=text]
+    {
+        text-align: center;
+        height: 30px;
+        border-radius: 10px;
+    }
+    input[type=file]
+    {
+        color: white;
+        background-color:#1D1C1F;
+        width: 40%;
+        height: 20px;
+        border-radius:5px;
+        font-size: 15px;
+        border:2px solid white;
+    }
+    .body
+    {
+        display: flex;
+
+    }
+    .left
+    {
+        width: 50%;
+        border: 2px solid rgb(2, 2, 2);
+        border-radius: 10px;
+        background-color: rgb(113, 114, 114);
+    }
+    .right
+    {
+        justify-content: center;
+    }
+    .container 
+    {
+        cursor: pointer;
+        font-size: 20px;
+        user-select: none;
+        background-color: #676767;
+        padding: 4px;
+        width: 25px;
+        height: 25px;
+    }
+        .container input
+    {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    .checkmark 
+    {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    background-color:red;
+    color:transparent;
+    transition: 0.1s;
+    }
+
+    .container input:checked ~ .checkmark {
+    background-color: #00de00;
+    color: white;
+    box-shadow: 0 0 10px #00ff00;
+    }
+    .cont
+    {
+    border-top: 2px solid rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    }
+    .lab
+    {
+    margin-top: 25px;
+    color: white;
+    font-size: 25px;
+    }
+    textarea
+    {
+        width: 80%;
+    }
+    select
+    {
+        border-radius: 10px;
+        margin: 10px;
+    }
+    .success
+    {
+      color: white;
+      margin: 30px;
+      width: 300px;
+      height: 30px;
+      background-color: rgb(43, 159, 63);
+      border-radius: 50px;
+      box-shadow: 0 10px 25px rgba(55, 228, 16, 0.4);
+      animation: text 5s 1 ;
+      text-align: center;
+    }
+</style>
+<body>
+    {% for message in messages %}
+    <div class="success">
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}} </strong>
+    </div>
+    </div>
+    {% endfor %}
+    <div class="head">
+        <div class="header">
+            <a href="/index">
+                <div class="heading">
+                    <p>LABORATORY</p>
+                </div>
+                <div class="heading2">
+                    <p>LABORATORY</p>
+                </div>
+            </a>
+        </div>
+        <div class="profile">
+            <div class="profile2">
+                <div class="profile-img">
+                    <img src="/static/profile.png" alt="">
+                </div>
+                <h3 style="width:100%">welcome {{request.user.username}}</h3>
+            </div>
+            <a href="/signout"><button class="sbutton">signout</button></a>
+        </div>
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {%for data in patient%}
+    <div class="header1">
+        <label for="">id</label>
+        <input type="text" name="id" id="id" value="{{data.id}}"readonly>
+        <label for="">name</label>
+        <input type="text" name="name" value="{{data.firstname}} {{data.middlename}} {{data.surname}}"readonly>
+        <label for="">Age</label>
+        <input type="text" name="age" id=" " value="{{data.age}}"readonly>
+
+        <button class="button1"> VIEW PATIENT RECORDS</button>
+    </div>
+    {%endfor%}
+    <div class="body">
+        <div class="left">
+            <label for="" > <u>Lab-processes</u></label>
+            <div class="cont">
+                <label for="" class="lab">SAMPLE COLLECTION</label>
+                <label class="container">
+                    <input type="checkbox" id="myCheckbox"> 
+                    <div class="checkmark"></div>
+                </label>
+            </div>
+            <div class="cont">
+                <label for="" class="lab">SAMPLE PROCESSING</label>
+                <label class="container">
+                    <input type="checkbox" id="myCheckbox"> 
+                    <div class="checkmark"></div>
+                </label>
+            </div>
+            <div class="cont">
+                <label for="" class="lab">SAMPLE ANALYSIS</label>
+                <label class="container">
+                    <input type="checkbox" id="myCheckbox"> 
+                    <div class="checkmark"></div>
+                </label>
+            </div>
+            <div class="cont">
+                <label for="" class="lab">imagination</label>
+                <label class="container">
+                    <input type="checkbox" id="myCheckbox"> 
+                    <div class="checkmark"></div>
+                </label>
+            </div>
+        </div>
+        <div class="right">
+            <label for=""> <u>RESULT-REPORT</u></label><br>
+            <label for="">RECEIVER:</label>
+            <select name="recieve" id="">
+                {%for rec in records%}
+                <option value="{{rec.job}} {{rec.name}}">{{rec.job}} {{rec.name}}</option>
+                {%endfor%}
+            </select><br>
+            <label for="">SUBJECT :</label>
+            <input type="text" name="subject" style="width:200px;height:25px;margin:10px">
+
+            <textarea name="report" id="" cols="80" rows="20"></textarea>
+            <input type="file" name="document" id="" accept=".pdf" style="margin: 20px;">
+        </div>
+    </div>
+    <button style="margin: 10px; height:40px">SUBMIT</button>
+    </form>
+</body>
+</html>

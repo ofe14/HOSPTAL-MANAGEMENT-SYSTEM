@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head><link rel="stylesheet" href="/static/reg1.css">
+<body>
+        {% for message in messages %}
+        <div class="success">
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}} </strong>
+        </div>
+        </div>
+        {% endfor %}
+    <div class="title">
+        Registration Form
+        <a href="/index"><button>HOME-PAGE</button></a>
+    </div>
+    <div class="container2">
+        <div class="reg">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form_wrap">
+                <div class="input_wrap">
+                    <label style="font-size:20px"><u><b>PEROSNAL INFORMATION<b></u></label><br>
+                    <div class="box">
+                        <label for="" class="lab"> <b> PATIENT I.D:</b><br>
+                        <input type="text" required name="id" id=""></label>
+                        <label for="" class="lab" style = "margin-left:30px"> <b>REGISTRATION-DATE: </b><br>
+                        <input type="date" required name="date1" id="" required></label>
+                    </div>
+                    <div class="box">
+                        <label for="" class="lab" ><b>FIRSTNAME:</b> <br>
+                        <input type="text" required name="firstname" id="" required>
+                        </label>
+                        <div class="label">
+                            <label for="" class="lab" style="margin-left:30px"> <b>MIDDLENAME:</b><br>
+                            <input type="text" required name="middlename" id=""></label>
+                        </div>
+                        <div class="label">
+                            <label for="" class="lab" style="margin-left:30px;" > <b>SURNAME:</b><br>
+                            <input type="text" required name="surname" id=""></label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="label">
+                            <label for="dob" >D.O.B</label>
+                            <input type="date" required name="date" id="dob" oninput="calcage();">
+                        </div>
+                        <div class="box">
+                            <div class="label">
+                                <label for="age" class="lab" style="margin-left:30px " >AGE
+                                <input type="number" required name="age" placeholder="age" id="age" >
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input_wrap">
+                            <ul>
+                            <li>
+                            <label class="radio_wrap">
+                            <input type="radio" required name="gender" value="MALE" class="input_radio" checked>
+                            <span>MALE</span>
+                            </label>
+                            </li>
+                            <li>
+                            <label class="radio_wrap">
+                            <input type="radio" required name="gender" value="FEMALE" class="input_radio">
+                            <span>FEMALE</span>
+                            </label>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <label for="" class="lab"><b>MARITAL:STATUS:</b><br>
+                            <input type="text" required name="marital" id="">
+                        </label>
+                        <div class="label">
+                            <label for="" class="lab" style="margin-left:30px"> <b>OCCUPATION:</b><br>
+                                <input type="text" required name="occupation" id="">
+                            </label>
+                        </div>
+                        <div class="label">
+                            <label for="" class="lab" style="margin-left:30px;" > <b>NATIONALITY:</b><br>
+                                <input type="text" required name="nationality" id="">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="label">
+                        <label for="" class="lab"> <b>E-MAIL</b> <br>
+                            <input type="text" required name="email" id=""></label><br>
+                        </div>
+                    </div>
+                    <label style="font-size:20px;width:300px"><u><b>IDENTIFICATION-DOCUMENT<b></u></label><br>
+                    <div class="box">
+                        <div class="label">
+                            <label for="" class="lab">PATIETNT I.D</label>
+                            <input type="file" required name="file" id="">
+                        </div>
+                        <div class="label">
+                            <label for="" class="lab">Profile-photo</label>
+                            <input type="file"  required name="photo" id=""  accept="image/">
+                        </div>
+                    </div>
+                    <label style="font-size:20px;width:300px"><u><b>HOME-ADDRESS<b></u></label><br>
+                    <div class="box">
+                        <div class="label">
+                            <label for="" class="lab" ><b>ADDRESS </b><br>
+                            <input type="text" required name="address1" id=""></label>
+                        </div>
+                        <div class="label">
+                            <label for="" class="lab" style="margin-left:30px;"><b>PHONE</b><br>
+                                <input type="text" required name="phone" id=""></label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="label">
+                        <label for="" class="lab"><b>STATE</b><br>
+                        <select name="state" id="" required>
+                        <option value="ABIA">ABIA</option>
+                        <option value="ADAMAWA">ADAMAWA</option>
+                        <option value="AKWA-IBOM">AKWA-IBOM</option>
+                        <option value="ANAMBRA">ANAMBRA</option>
+                        <option value="BAUCHI">BAUCHI</option>
+                        <option value="BAYELSA">BAYELSA</option>
+                        <option value="BENUE">BENUE</option>
+                        <option value="BORNO">BORNO</option>
+                        <option value="CROSS RIVER">CROSS RIVER</option>
+                        <option value="DELTA">DELTA</option>
+                        <option value="EBONYI">EBONYI</option>
+                        <option value="EDO">EDO</option>
+                        <option value="EKITI">EKITI</option>
+                        <option value="ENEGU">ENEGU</option>
+                        <option value="GOMBE">GOMBE</option>
+                        <option value="IMO">IMO</option>
+                        <option value="JIGAWA">JIGAWA</option>
+                        <option value="KADUNA">KADUNA</option>
+                        <option value="KANO">KANO</option>
+                        <option value="KATSINA">KATSINA</option>
+                        <option value="KEBBI">KEBBI</option>
+                        <option value="KOGI">KOGI</option>
+                        <option value="KWARA">KWARA</option>
+                        <option value="LAGOS">LAGOS</option>
+                        <option value="NASARAWA">NASARAWA</option>
+                        <option value="NIGER">NIGER</option>
+                        <option value="OGUN">OGUN</option>
+                        <option value="ONDO">ONDO</option>
+                        <option value="OSUN">OSUN</option>
+                        <option value="OYO">OYO</option>
+                        <option value="PLATEAU">PLATEAU</option>
+                        <option value="RIVERS">RIVERS</option>
+                        <option value="SOKOTO">SOKOTO</option>
+                        <option value="TARABA">TARABA</option>
+                        <option value="YOBE">YOBE</option>
+                        <option value="ZAMFARA">ZAMFARA</option>
+                    </select></label>
+                    </div>
+                </div>
+            </div>
+           <div class="mailing">
+           <label style="font-size:20px"><u><b>EMERGENCY-CONTACT<b></u></label><br>
+           <div class="box">
+           <div class="label">
+           <label for="" class="lab"><b> <u>Name</u> </b> <br>
+           <input type="text" required name="emg_name" id=""></label><br>
+           </div>
+           <div class="label">
+            <label for="" class="lab" style="margin-left:30px;"><b>RELATIONSHIP<br> 
+            </b> <input type="text" required name="emg_relationship" id=""style="margin-left:30px;"></label>
+            </div>
+           <div class="label">
+           <label for="" class="lab" style="margin-left:30px;"><b>ADDRESS <br> 
+            </b> <input type="text" required name="address2" id=""style="margin-left:30px;"></label>
+           </div>
+           </div>
+           <div class="box">
+            <div class="label">
+                <label for="" class="lab"><b>PHONE</b> <br>
+                <input type="text" required name="emg_phone" id=""></label><br>
+                </div>
+           <div class="label" style="margin-left:30px;">
+            <label for="" class="lab" ><b>STATE </b><br> 
+            <select name="state2" id="" required>
+                <option value="ABIA">ABIA</option>
+                <option value="ADAMAWA">ADAMAWA</option>
+                <option value="AKWA-IBOM">AKWA-IBOM</option>
+                <option value="ANAMBRA">ANAMBRA</option>
+                <option value="BAUCHI">BAUCHI</option>
+                <option value="BAYELSA">BAYELSA</option>
+                <option value="BENUE">BENUE</option>
+                <option value="BORNO">BORNO</option>
+                <option value="CROSS RIVER">CROSS RIVER</option>
+                <option value="DELTA">DELTA</option>
+                <option value="EBONYI">EBONYI</option>
+                <option value="EDO">EDO</option>
+                <option value="EKITI">EKITI</option>
+                <option value="ENEGU">ENEGU</option>
+                <option value="GOMBE">GOMBE</option>
+                <option value="IMO">IMO</option>
+                <option value="JIGAWA">JIGAWA</option>
+                <option value="KADUNA">KADUNA</option>
+                <option value="KANO">KANO</option>
+                <option value="KATSINA">KATSINA</option>
+                <option value="KEBBI">KEBBI</option>
+                <option value="KOGI">KOGI</option>
+                <option value="KWARA">KWARA</option>
+                <option value="LAGOS">LAGOS</option>
+                <option value="NASARAWA">NASARAWA</option>
+                <option value="NIGER">NIGER</option>
+                <option value="OGUN">OGUN</option>
+                <option value="ONDO">ONDO</option>
+                <option value="OSUN">OSUN</option>
+                <option value="OYO">OYO</option>
+                <option value="PLATEAU">PLATEAU</option>
+                <option value="RIVERS">RIVERS</option>
+                <option value="SOKOTO">SOKOTO</option>
+                <option value="TARABA">TARABA</option>
+                <option value="YOBE">YOBE</option>
+                <option value="ZAMFARA">ZAMFARA</option>
+            </select></label>
+           </div>
+           </div>
+           <label style="font-size:20px"><u><b>MEDICAL-HISTORY<b></u></label><br>
+            <div class="box">
+                <div class="label">
+                    <label for="" class="lab"><b>KNOWN-ALLERGIES</b> <br> 
+                    <textarea name="allergies" id="" cols="50" rows="10" required></textarea>
+                </div>
+                <div class="label">
+                    <label for="" class="lab" style="margin-left:30px;"><b>PAST-SURGRIES</b><br> 
+                    <textarea name="surgries" id="" cols="50" rows="10" style="margin-left:30px;" required></textarea>
+                </div>
+            </div>
+            <div class="box">
+                <div class="label">
+                    <label for="" class="lab"><b>Chronic illness <br> 
+                    <input type="text" required name="chronic_illness" id=""></label>
+                </div>
+            </div>
+            
+           <label style="font-size:20px"><u><b>PAYMENT<b></u></label><br>
+           <div class="box">
+           <div class="label">
+            <label for="" class="lab">PAYMENT :<br>
+           <select name="payment" id="" required>
+                <option value="CASH">CASH</option>
+                <option value="INSURANCE">INSURANCE</option>
+            </select></label>
+            </div>
+            </div>
+            <div class="submit">
+            <div class="input_wrap">
+  					<input type="submit" name="submit" value="REGISTER" class="submit_btn">
+            </div>
+  				</div>
+            </div>
+           </form>
+            </div>
+            </div>
+            </div>
+           </div>
+           </div>
+  			</div>
+            </div>
+            </div>
+           </div>
+        </div>
+    </div>
+</body>
+<script>
+    function calcage(){
+      var today = new Date();
+      var dob= new Date (document.getElementById('dob').value)
+      var date = new Date(today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate())
+      var result=date-dob
+      var years=(Math.round(result/(1000*60*60*24)))
+      var final =Math.floor(years/365)
+      document.getElementById('age').value =final
+  
+    }
+    
+    document.querySelectorAll("#age").forEach(dob)
+  </script>
+</html>

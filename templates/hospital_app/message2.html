@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage-hospital</title>
+    <link  href="/static/medart.png" rel="icon" >
+</head>
+<style>
+    body
+    {
+        text-align: center;
+        background-image: linear-gradient(to bottom,#1D1C1F,#45BCE5);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        
+    }
+    .head
+    {
+        display: flex;
+        border-radius: 20px; 
+        font-size: 15px; 
+        text-align: center;
+    }
+    .header
+    {
+        border: 1px solid #45BCE5;
+        background-color:#272628;
+        line-height: 50px;
+        border-radius: 20px;  
+        font-size: 43px;
+        width: 80%;
+        height: 140px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    .heading
+    {
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        color: white;
+        height: 100px;
+        font-size: 50px
+    }
+    .heading2
+    {
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        color: white;
+        height: 100px;
+        font-size: 50px;;
+        display: none;
+    }
+    .profile
+    {
+        padding: 10px;
+        width: 20%;
+        min-width: 250px;
+        height: 100px;
+        border: none;
+        border-radius: 20px;
+        background-color: rgb(190, 193, 195);
+        backdrop-filter:blur(5px);
+        font-family: cursive;
+        margin: 15px;
+
+
+    }
+    .profile2
+    {
+        display: flex;
+    }
+    .profile-img
+    {
+        width: 55px;
+        height: 55px;
+    }
+    img
+    {
+        width: 100%;
+        height: 100%;
+    }
+    .body
+    {
+        display: flex;
+        width: 100%;
+    }
+    .left
+    {
+        height: 600px;
+        width: 30%;
+        border: 2px solid #1D1C1F;
+        margin-left: 20px;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .mes
+    {
+        overflow-y: scroll;
+        height: 550px;
+    }
+    .mes::-webkit-scrollbar{
+        display: none;
+    }
+    .right
+    {
+        height: 600px;
+        width: 70%;
+        border: 2px solid #1D1C1F;
+        margin-left: 20px;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #1D1C1F;
+        color: white;
+        overflow-y: scroll;
+        word-wrap: break-word;
+    }
+    .right::-webkit-scrollbar{
+        display: none;
+    }
+    .messages
+    {
+        width: 100%;
+        background-color: #1D1C1F;
+        color: white;
+        text-align: left;
+        padding: 2px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .file
+    {
+        height: 70px;
+        width: 200px;
+        border: 2px solid white;
+        border-radius: 5px;
+        background-color: white;
+        display: flex;
+    }
+    .clipart
+    {
+        height:65px;
+        width: 65px;
+    }
+    .clipart1
+    {
+        height:65px;
+        width: 65px;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    img
+    {
+        width: 100%;
+        height: 100%;
+    }
+    h5
+    {
+        text-align: left;
+        font-size: 17px;
+    }
+    h4
+    {
+        margin: 10px;
+        color: rgb(119, 119, 219);
+    }
+    a
+    {
+        text-decoration: none;
+        color: black;
+    }
+    .body1
+    {
+        width: 10%;
+        height:775px;
+        background-color: rgba(53, 47, 47, 0.4);
+        backdrop-filter: blur(10px);
+        z-index:2;
+        border: 1px solid #45BCE5;
+        margin-right: 3px;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+    }
+    .body2
+    {
+        width: 90%;
+        height:100vh;
+
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4); 
+      }
+      .modal2
+       {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4); 
+      }
+      
+    
+      .modal-content {
+        background-color: #aaa;
+        border-radius: 10px;
+        margin: 15% auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        color: rgb(16, 15, 15);
+        border: 1px solid #45BCE5;
+        text-align: left;
+      }
+      textarea
+      {
+        width: 90%;
+      }
+      input[type='text']
+      {
+        background-color:rgb(0,0,0,0);
+        border: none;
+        width: 70%;
+      }
+      input[type='file']
+      {
+        border: 2px solid black;
+        border-radius: 10px;
+        width: 85%;
+      }
+      .success
+      {
+        color: white;
+        margin: 30px;
+        width: 300px;
+        height: 30px;
+        background-color: rgb(43, 159, 63);
+        border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(55, 228, 16, 0.4);
+        animation: text 5s 1 ;
+      }
+      .search
+      {
+        margin-bottom: 20px;
+      }
+      input[type="search"]
+      {
+        width:100%;
+        height: 30px;
+        border-radius: 10px;
+      }
+      .sbutton
+      {
+          color: white;
+          background-color:#1D1C1F;
+          width: 100%;
+          height: 40px;
+          border-radius: 20px;
+          font-size: 15px;
+          border:2px solid white;
+      }
+      .sbutton:hover
+      {
+          background-color: #972b2b;
+          cursor: pointer;
+      }
+      .sbutton1
+      {
+          color: white;
+          background-color:#1D1C1F;
+          width: 50%;
+          height: 40px;
+          border-radius: 20px;
+          font-size: 15px;
+          border:2px solid white;
+      }
+      .sbutton1:hover
+      {
+          background-color: #45BCE5;
+          cursor: pointer;
+      }
+      span
+      {
+        background-color: red;
+        border: 2px solid white;
+        float: right;
+        width: 25px;
+        height: 25px;
+        font-size: 25px;
+        text-align: center;
+        cursor: pointer;
+      }
+</style>
+<body>
+    {% for message in messages %}
+    <div class="success">
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}} </strong>
+    </div>
+    </div>
+    {% endfor %}
+    <div class="body1">
+        <div class="cont1">
+            <div class="clipart1">
+                <button id="myBtn" style="border-radius: 10px;"><img src="/static/chatting.png" alt=""></button><br>
+                <label for="">New Message</label>
+            </div>
+        </div>
+        <div class="cont1">
+            <div class="clipart1">
+                <a href="/doctors"><button style="border-radius: 10px;"><img src="/static/home.png" alt=""></button></a><br>
+                <label for="">Home</label>
+            </div>
+        </div>
+    </div>
+    <div class="body2">
+        <div class="head">
+            <div class="header">
+                <a href="/index">
+                    <div class="heading">
+                        <p>MESSAGES</p>
+                    </div>
+                    <div class="heading2">
+                        <p>Messages</p>
+                    </div>
+                </a>
+            </div>
+            <div class="profile">
+                <div class="profile2">
+                    <div class="profile-img">
+                        <img src="/static/profile.png" alt="">
+                    </div>
+                    <h3 style="width:100%">welcome {{request.user.username}}</h3>
+                </div>
+                <a href="/signout"><button class="sbutton">signout</button></a>
+            </div>
+        </div> 
+        <div class="body">
+            <div class="left">
+                <div class="search">
+                    <form action="/message" method="post">
+                    {%csrf_token%}
+                    <input type="search" name="search" id="" placeholder="Search Messages">
+                    <input type="submit" value="Submit" hidden>
+                </form>
+                </div>
+                <div class="mes">
+                    {%for name in check%}
+                    <a href="/message2/{{name.subject}}">
+                    <div class="messages">
+                        <h4>FROM:{{name.sender}}<h4 style="color: white;">{{name.subject}}</h4></h4><br> 
+                    </div>
+                    </a>
+                    {%endfor%}
+                </div>
+            </div>
+            {%for name in message%}
+            <div class="right">
+                <p style="font-size:20px"><U>{{name.subject}}</U></p><br>
+                <h5>
+                    {{name.message}}
+                </h5>
+                {%if name.file %}
+                <a href="{{name.file.url}}" target="_blank">
+                <div class="file">
+                    <div class="clipart">
+                        <img src="/static/attached.png" alt="">
+                    </div>
+                    <h3>Attached File</h3>
+                </div>
+                 </a>
+                 {%endif%}
+                 <h5>Sent:{{name.time}}</h5>
+                <button style="margin-top:100px" id="myBtn2" class="sbutton1">REPLY</button>
+                <div id="myModal2" class="modal2">     
+                    <div class="modal-content">
+                      <span class="close2">&times;</span>
+                      <form action="" method="post" enctype="multipart/form-data">
+                        {%csrf_token%}
+                        FROM:
+                        <input type="text" name="sender" id="sender" value="{{request.user.username}}" readonly><br>
+                        SUBJECT:
+                        <input type="text" name="subject" id="subject" required><br>
+                        TO:
+                        <input type="text" name="receiver" id="to" value="{{name.sender}}" readonly><br>
+                        MESSAGE:
+                        <textarea name="message" id="" cols="60" rows="15" ></textarea><br>
+                        <input type="file" name="document" id="" accept=".pdf" style="margin: 20px;"><br>
+                        <input type="submit" value="Submit">
+                        </form>
+                      </div>
+                    </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">     
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            FROM:
+            <input type="text" name="sender" id="sender" value="{{request.user.username}}" readonly><br>
+            SUBJECT:
+            <input type="text" name="subject" id="subject" required><br>
+            TO:
+            <input type="text" name="receiver" id="to" required><br>
+            MESSAGE:
+            <textarea name="message" id="" cols="60" rows="15" ></textarea><br>
+            <input type="file" name="document" id="" accept=".pdf" style="margin: 20px;"><br>
+            <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+     
+</body>
+<script>
+    var modal = document.getElementById("myModal");
+
+    var modal2 = document.getElementById("myModal2");
+  
+    var btn = document.getElementById("myBtn");
+
+    var btn2 = document.getElementById("myBtn2");
+    
+    var span = document.getElementsByClassName("close")[0];
+
+    var span2= document.getElementsByClassName("close2")[0];
+    
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    btn2.onclick = function() {
+        modal2.style.display = "block";
+    }
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    span2.onclick = function() {
+        modal2.style.display = "none";
+    }
+    window.onclick = function(event)
+     {
+      if (event.target == modal) 
+      {
+        modal.style.display = "none";
+      }    
+    }
+    window.onclick = function(event2)
+    {
+     if (event2.target == modal2) 
+     {
+       modal2.style.display = "none";
+     }    
+   }
+</script>
+</html>

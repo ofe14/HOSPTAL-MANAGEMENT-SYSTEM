@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/index.css">
+    <link  href="/static/medart.png" rel="icon" >
+    <title>Heritage-hospital</title>
+</head>
+<body>
+    {%if user.is_authenticated %}
+    <div class="head">
+        <div class="header">
+            <a href="/index">
+                <div class="heading">
+                    <p>HERITAGE</p><div class="container_logo2"><img src="/static/medart.png" alt=""></div> <p>HOSPITAL</p>
+                </div>
+                <div class="heading2">
+                    <p>HERITAGE</p><p>-HOSPITAL</p>
+                </div>
+            </a>
+        </div>
+        <div class="profile">
+            <div class="profile2">
+                <div class="profile-img">
+                    <img src="/static/profile.png" alt="">
+                </div>
+                <h3 style="width:100%">welcome {{request.user.username}}</h3>
+            </div>
+            <a href="/signout"><button class="sbutton">signout</button></a>
+        </div>
+    </div>
+    <div class="body">
+        <div class="wrapper">
+            <div class="content2">
+                <a href="/reg"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/verify.png" alt="">
+                    </div>
+                     <h2>REGISTRATION</h2> </div>
+                    </a>
+                <a href="/record">
+                    <div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/patient.png" alt="">
+                    </div>
+                    <h2>PATIENT RECORDS</h2>
+                </div>
+            </a>
+                <a href="/check_in"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/check-in.png" alt="">
+                    </div>
+                    <h2>CHECK-IN</h2>
+                </div>
+            </a>
+                <a href="/appointment-page"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/appointment.png" alt="">
+                    </div>
+                    <h2>APPOINTMENT</h2>
+                </div></a>
+                <a href="/vitals"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/check-up.png" alt="">
+                    </div>
+                    <h2>VITAL-SIGNS</h2>
+                </div></a>
+                <a href=""><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/medicine.png" alt="">
+                    </div>
+                    <h2>PHARMACY</h2>
+                </div></a>
+                <a href="/create_user"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/add-user.png" alt="">
+                    </div>
+                    <h2>ADD NEW USER</h2>
+                </div></a>
+                <a href="/staff"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/management.png" alt="">
+                    </div>
+                    <h2>Staff Management</h2>
+                </div></a>
+                <a href="doctors"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/doc.png" alt="">
+                    </div>
+                    <h2>DOCTORS</h2>
+                </div></a>
+                <a href="/lab"><div class="menu">
+                    <div class="container_logo">
+                        <img src="/static/microscope.png" alt="">
+                    </div>
+                    <h2>LABORATORY</h2>
+                </div></a>
+            </div>
+            <a href="/signout" class="signout"><button class="sbutton">signout</button></a>
+        </div>
+    </div>
+    {%else%}
+        <a href="/signin"><button style="width: 400px; margin-top:20px">LOG-IN</button></a>
+    {% endif %}
+</body>
+</html>
